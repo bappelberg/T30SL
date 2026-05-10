@@ -33,13 +33,17 @@ function createPanel(technician) {
     catBtn.className = "category-btn";
     catBtn.textContent = label;
     catBtn.addEventListener("click", () => {
-      if (state === "running") {
-        return;
+      if (state === "running") return;
+      if (selectedCategory === key) {
+        catBtn.classList.remove("active");
+        selectedCategory = null;
+        startBtn.disabled = true;
+      } else {
+        categoryList.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+        catBtn.classList.add("active");
+        selectedCategory = key;
+        startBtn.disabled = false;
       }
-      categoryList.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
-      catBtn.classList.add("active");
-      selectedCategory = key;
-      startBtn.disabled = false;
     });
     categoryList.appendChild(catBtn);
   });
