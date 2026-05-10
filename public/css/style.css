@@ -11,6 +11,12 @@
   --border:     #D4D9E8;
   --surface:    #F2F4F8;
   --white:      #FFFFFF;
+  --dark:       #000000;
+  --green:      #00A800;
+  --green-dark: #007200;
+  --black:      #000000;
+  --red:        #E90000;
+  --red-dark:   #C70000;
 }
 
 *, *::before, *::after {
@@ -139,7 +145,7 @@ main {
   text-align: center;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
-  color: var(--blue);
+  color: var(--dark);
   line-height: 1;
   padding: 0.25rem 0;
 }
@@ -155,13 +161,13 @@ main {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  background: var(--blue);
+  background: var(--green);
   color: var(--white);
   transition: background 0.1s, transform 0.08s;
 }
 
 .start-btn:hover:not(:disabled) {
-  background: var(--blue-dark);
+  background: var(--green-dark);
 }
 
 .start-btn:active:not(:disabled) {
@@ -175,11 +181,11 @@ main {
 }
 
 .start-btn.running {
-  background: var(--crimson);
+  background: var(--red);
 }
 
 .start-btn.running:hover:not(:disabled) {
-  background: var(--crimson-dk);
+  background: var(--red-dark);
 }
 
 /* ── Stats toggle ── */
