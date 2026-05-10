@@ -17,7 +17,7 @@ CONTENT_TYPES = {
     ".ico":  "image/x-icon",
 }
 
-TECHNICIANS = ["R", "A", "B"]
+TECHNICIANS = ["Tekniker 1", "Tekniker 2", "Tekniker 3"]
 
 
 def get_db():
