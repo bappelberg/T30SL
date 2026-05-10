@@ -89,6 +89,7 @@ function createPanel(technician) {
 
 async function init() {
   const root = document.getElementById("root");
+  Stats.init(root);
   const technicians = await Storage.getTechnicians();
   technicians.forEach(tech => root.appendChild(createPanel(tech)));
 }

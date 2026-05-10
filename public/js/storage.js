@@ -12,4 +12,9 @@ const Storage = {
     });
     return res.json();
   },
+
+  async getEntries() {
+    const res = await fetch('/api/entries');
+    return res.json();
+  },
 };

@@ -2,8 +2,6 @@ Titel: Att mäta det osynliga arbetet inom IT-support - En förstudie om oregist
 
 Datum: 2026-05-09
 
- 
-
 1 Inledning
 IT-support mäts vanligtvis genom ett ärendesystem där varje uppgift registreras, följs upp och avslutas. Men allt arbete hamnar inte alltid i systemet. En del av supporten sker informellt, när kollegor kommer förbi skrivbordet och ber om hjälp på plats, utan att ett ärende skapas.
 

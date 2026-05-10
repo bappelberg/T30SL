@@ -3,7 +3,6 @@ import json
 import os
 import sqlite3
 from datetime import datetime, timezone
-from socketserver import ThreadingMixIn
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 
@@ -79,6 +78,27 @@ class Handler(BaseHTTPRequestHandler):
                     ORDER BY e.id DESC
                 """).fetchall()
             self.send_json([dict(r) for r in rows])
+            return
+
+        if path == "/api/entries/csv":
+            with get_db() as conn:
+                rows = conn.execute("""
+                    SELECT t.name AS tekniker, e.category AS kategori,
+                           e.seconds AS sekunder, e.timestamp AS tidpunkt
+                    FROM entries e
+                    JOIN technicians t ON t.id = e.technician_id
+                    ORDER BY e.id DESC
+                """).fetchall()
+            lines = ["Tekniker,Kategori,Sekunder,Tidpunkt"]
+            for r in rows:
+                lines.append(f"{r['tekniker']},{r['kategori']},{r['sekunder']},{r['tidpunkt']}")
+            body = "\n".join(lines).encode("utf-8-sig")
+            self.send_response(200)
+            self.send_header("Content-Type", "text/csv; charset=utf-8")
+            self.send_header("Content-Disposition", "attachment; filename=t30sl.csv")
+            self.send_header("Content-Length", len(body))
+            self.end_headers()
+            self.wfile.write(body)
             return
 
         if path == "/":
